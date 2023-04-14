@@ -25,7 +25,7 @@ androideabi-4.9()
   fi
 }
 
-clangd()
+clangdd()
 {
   if [ ! -d $PARENT_DIR/clang ]; then
     git clone https://github.com/johnt1989/toolchains -b clang $PARENT_DIR/clang
@@ -38,7 +38,7 @@ export PATH=${CLANG_PATH}:${ELF_PATH}:${PATH}
 export CLANG_TRIPLE=aarch64-linux-gnu-
 export CROSS_COMPILE=$PARENT_DIR/aarch64-linux-android-4.9/bin/aarch64-linux-android- CC=clang CXX=clang++
 export CROSS_COMPILE_ARM32=$PARENT_DIR/arm-linux-androideabi-4.9/bin/arm-eabi-
-export KBUILD_COMPILER_STRING=$($PARENT_DIR/clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
+export KBUILD_COMPILER_STRING=$(${PARENT_DIR}/clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 export CXXFLAGS="$CXXFLAGS -fPIC"
 export DTC_EXT=dtc
 export ARCH=arm64
@@ -102,7 +102,7 @@ anykernel3()
 aarch64-4.9
 aarch64-elf-4.9
 androideabi-4.9
-clangd
+clangdd
 clean
 build
 anykernel3
