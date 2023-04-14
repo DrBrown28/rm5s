@@ -1286,7 +1286,6 @@ config SND_SOC_MAX9877
 	
 config SND_SOC_MAX98937
 	tristate "Audio SMART PA 98937 support"
-	help
 	
 config SND_SOC_MC13783
 	tristate
